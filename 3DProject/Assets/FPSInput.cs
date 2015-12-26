@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(CharacterController))] //enforces requirement
+[AddComponentMenu("Control Script/FPS Input")] //adds script for quick add
+
 public class FPSInput : MonoBehaviour {
 
 	public float gravity = -9.8f;
@@ -17,7 +20,7 @@ public class FPSInput : MonoBehaviour {
 	void Update () {
 		float deltaX = Input.GetAxis ("Horizontal") * speed;
 		float deltaZ = Input.GetAxis ("Vertical") * speed;
-		Vector3 movement = new Vector3 (deltaX, 0, deltaZ);
+		Vector3 movement = new Vector3 (deltaX, 0, deltaZ); //Vector3 is 3D vector
 		movement = Vector3.ClampMagnitude (movement, speed);  //limit movement speed
 		movement.y = gravity;
 		movement *= Time.deltaTime; //compensates for frame speed
