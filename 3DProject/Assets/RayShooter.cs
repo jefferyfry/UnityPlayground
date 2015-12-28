@@ -18,6 +18,7 @@ public class RayShooter : MonoBehaviour {
 			Ray ray = camera.ScreenPointToRay(point);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)) {  //C# 'out' enforces pass by reference
+				Debug.Log("Hit!");
 				GameObject hitObject = hit.transform.gameObject; //checks if we hit a game object
 				ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
 				if(target != null) { //check to see if we hit our reactive target

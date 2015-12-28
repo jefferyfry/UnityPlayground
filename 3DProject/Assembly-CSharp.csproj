@@ -49,6 +49,7 @@
      <Compile Include="Assets\MouseLook.cs" />
      <Compile Include="Assets\RayShooter.cs" />
      <Compile Include="Assets\ReactiveTarget.cs" />
+     <Compile Include="Assets\SceneController.cs" />
      <Compile Include="Assets\Spin.cs" />
      <Compile Include="Assets\WanderingAI.cs" />
  <Reference Include="UnityEngine.Networking">
