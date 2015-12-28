@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class RayShooter : MonoBehaviour {
-	private Camera camera;
+	private Camera playerCamera;
 
 	// Use this for initialization
 	void Start () {
-		camera = GetComponent<Camera>();
+		playerCamera = GetComponent<Camera>();
 		Cursor.lockState = CursorLockMode.Locked; //lock cursor to the center of the game window
 		Cursor.visible = false; //hide the mouse cursor
 	}
@@ -14,8 +14,8 @@ public class RayShooter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
-			Vector3 point = new Vector3(camera.pixelWidth / 2, camera.pixelHeight / 2, 0);
-			Ray ray = camera.ScreenPointToRay(point);
+			Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
+			Ray ray = playerCamera.ScreenPointToRay(point);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)) {  //C# 'out' enforces pass by reference
 				Debug.Log("Hit!");
@@ -44,8 +44,8 @@ public class RayShooter : MonoBehaviour {
 	// runs every frame after 3D scene is rendered
 	void OnGUI() {
 		int size = 12;
-		float posX = camera.pixelWidth / 2 - size / 4;
-		float posY = camera.pixelHeight / 2 - size / 2;
+		float posX = playerCamera.pixelWidth / 2 - size / 4;
+		float posY = playerCamera.pixelHeight / 2 - size / 2;
 		GUI.Label(new Rect(posX, posY, size, size), "*"); //basic user interface API
 	}
 }

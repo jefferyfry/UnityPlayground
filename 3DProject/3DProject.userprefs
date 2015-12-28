@@ -1,8 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/RayShooter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SceneController.cs">
     <Files>
-      <File FileName="Assets/RayShooter.cs" Line="19" Column="36" />
+      <File FileName="Assets/RayShooter.cs" Line="48" Column="28" />
+      <File FileName="Assets/ReactiveTarget.cs" Line="9" Column="29" />
+      <File FileName="Assets/WanderingAI.cs" Line="23" Column="37" />
+      <File FileName="Assets/SceneController.cs" Line="13" Column="47" />
+      <File FileName="Assets/Robot Kyle/Model/Player.cs" Line="11" Column="34" />
+      <File FileName="Assets/Robot Kyle/Model/Projectile.cs" Line="17" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
