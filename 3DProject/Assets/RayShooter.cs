@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class RayShooter : MonoBehaviour {
 	private Camera playerCamera;
@@ -7,13 +8,13 @@ public class RayShooter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerCamera = GetComponent<Camera>();
-		Cursor.lockState = CursorLockMode.Locked; //lock cursor to the center of the game window
-		Cursor.visible = false; //hide the mouse cursor
+		//Cursor.lockState = CursorLockMode.Locked; //lock cursor to the center of the game window
+		//Cursor.visible = false; //hide the mouse cursor
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (0) && !EventSystem.current.IsPointerOverGameObject()) { //check gui is not used
 			Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
 			Ray ray = playerCamera.ScreenPointToRay(point);
 			RaycastHit hit;
@@ -23,6 +24,7 @@ public class RayShooter : MonoBehaviour {
 				ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
 				if(target != null) { //check to see if we hit our reactive target
 					target.ReactToHit();
+					Messenger.Broadcast(GameEvent.ENEMY_HIT);
 				}
 				else
 					StartCoroutine(SphereIndicator(hit.point)); //basically starts a new thread for this method
