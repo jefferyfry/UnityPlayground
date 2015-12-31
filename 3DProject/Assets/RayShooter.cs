@@ -4,9 +4,11 @@ using UnityEngine.EventSystems;
 
 public class RayShooter : MonoBehaviour {
 	private Camera playerCamera;
+	private GUIStyle myStyle = new GUIStyle();
 
 	// Use this for initialization
 	void Start () {
+		myStyle.fontSize = 48;
 		playerCamera = GetComponent<Camera>();
 		//Cursor.lockState = CursorLockMode.Locked; //lock cursor to the center of the game window
 		//Cursor.visible = false; //hide the mouse cursor
@@ -45,9 +47,9 @@ public class RayShooter : MonoBehaviour {
 
 	// runs every frame after 3D scene is rendered
 	void OnGUI() {
-		int size = 12;
+		int size = 48;
 		float posX = playerCamera.pixelWidth / 2 - size / 4;
 		float posY = playerCamera.pixelHeight / 2 - size / 2;
-		GUI.Label(new Rect(posX, posY, size, size), "*"); //basic user interface API
+		GUI.Label(new Rect(posX, posY, size, size), "*",myStyle); //basic user interface API
 	}
 }
