@@ -22,9 +22,12 @@ public class RelativeMovement : MonoBehaviour {
 
 	private ControllerColliderHit contact;
 
+	private Animator animator;
+
 	void Start(){
 		vertSpeed = minFall;
 		characterController = GetComponent<CharacterController>();
+		animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -37,8 +40,8 @@ public class RelativeMovement : MonoBehaviour {
 		float horInput = Input.GetAxis("Horizontal");
 		float vertInput = Input.GetAxis("Vertical");
 		if (horInput != 0 || vertInput != 0) {
-			movement.x = horInput;
-			movement.z = vertInput;
+			movement.x = horInput * moveSpeed;
+			movement.z = vertInput * moveSpeed;
 			movement = Vector3.ClampMagnitude(movement, moveSpeed);
 
 			Quaternion tmp = orbitCamera.rotation;
@@ -53,6 +56,8 @@ public class RelativeMovement : MonoBehaviour {
 			                                     direction, rotSpeed * Time.deltaTime);
 		}
 
+		animator.SetFloat("Speed", movement.sqrMagnitude);
+
 		//jumping
 		//raycasting to check if on ground
 		bool hitGround = false;
@@ -65,13 +70,16 @@ public class RelativeMovement : MonoBehaviour {
 		if(hitGround) { //changed from characterController.isGrounded to use the raycasting results
 			if(Input.GetButtonDown("Jump"))
 				vertSpeed = jumpSpeed;
-			else
-				vertSpeed = minFall;
+			else {
+				vertSpeed = -0.1f;
+				animator.SetBool("Jumping", false);
+			}
 		} else {
 			vertSpeed += gravity * 5 * Time.deltaTime;
 			if(vertSpeed < terminalVelocity)
 				vertSpeed = terminalVelocity;
-
+			if(contact!=null)
+				animator.SetBool("Jumping", true);
 			if(characterController.isGrounded) {
 				if(Vector3.Dot(movement, contact.normal) < 0)
 					movement = contact.normal * moveSpeed;
