@@ -20,6 +20,8 @@ public class RelativeMovement : MonoBehaviour {
 
 	private CharacterController characterController; //character controller provides movement input and collisioning handling
 
+	private ControllerColliderHit contact;
+
 	void Start(){
 		vertSpeed = minFall;
 		characterController = GetComponent<CharacterController>();
@@ -52,7 +54,15 @@ public class RelativeMovement : MonoBehaviour {
 		}
 
 		//jumping
-		if(characterController.isGrounded) {
+		//raycasting to check if on ground
+		bool hitGround = false;
+		RaycastHit hit;
+		if(vertSpeed < 0 && Physics.Raycast(transform.position, Vector3.down, out hit)) {
+			float check = (characterController.height + characterController.radius) / 1.9f;
+			hitGround = hit.distance <= check;
+		}
+
+		if(hitGround) { //changed from characterController.isGrounded to use the raycasting results
 			if(Input.GetButtonDown("Jump"))
 				vertSpeed = jumpSpeed;
 			else
@@ -61,10 +71,21 @@ public class RelativeMovement : MonoBehaviour {
 			vertSpeed += gravity * 5 * Time.deltaTime;
 			if(vertSpeed < terminalVelocity)
 				vertSpeed = terminalVelocity;
+
+			if(characterController.isGrounded) {
+				if(Vector3.Dot(movement, contact.normal) < 0)
+					movement = contact.normal * moveSpeed;
+				else
+					movement += contact.normal * moveSpeed;
+			}
 		}
 		movement.y = vertSpeed;
 
 		movement *= Time.deltaTime;
 		characterController.Move(movement);
+	}
+
+	void OnControllerColliderHit(ControllerColliderHit hit){
+		contact = hit;
 	}
 }
