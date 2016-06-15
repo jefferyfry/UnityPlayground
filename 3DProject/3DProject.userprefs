@@ -1,18 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/RayShooter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Robot Kyle/Model/Projectile.cs">
     <Files>
-      <File FileName="Assets/RayShooter.cs" Line="50" Column="16" />
-      <File FileName="Assets/ReactiveTarget.cs" Line="9" Column="29" />
-      <File FileName="Assets/WanderingAI.cs" Line="11" Column="2" />
-      <File FileName="Assets/SceneController.cs" Line="27" Column="52" />
+      <File FileName="Assets/SceneController.cs" Line="1" Column="1" />
+      <File FileName="Assets/FPSInput.cs" Line="25" Column="49" />
+      <File FileName="Assets/Robot Kyle/Model/SettingsPopup.cs" Line="1" Column="1" />
+      <File FileName="Assets/RayShooter.cs" Line="1" Column="1" />
+      <File FileName="Assets/ReactiveTarget.cs" Line="11" Column="3" />
+      <File FileName="Assets/WanderingAI.cs" Line="35" Column="28" />
       <File FileName="Assets/Robot Kyle/Model/Player.cs" Line="1" Column="1" />
-      <File FileName="Assets/Robot Kyle/Model/Projectile.cs" Line="1" Column="1" />
-      <File FileName="Assets/Robot Kyle/Model/UIController.cs" Line="41" Column="37" />
-      <File FileName="Assets/Robot Kyle/Model/SettingsPopup.cs" Line="29" Column="62" />
-      <File FileName="Assets/Messenger.cs" Line="291" Column="2" />
-      <File FileName="Assets/Robot Kyle/GameEvent.cs" Line="8" Column="2" />
-      <File FileName="Assets/FPSInput.cs" Line="43" Column="3" />
+      <File FileName="Assets/Robot Kyle/Model/Projectile.cs" Line="18" Column="4" />
+      <File FileName="Assets/Robot Kyle/Model/UIController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Messenger.cs" Line="1" Column="1" />
+      <File FileName="Assets/Robot Kyle/GameEvent.cs" Line="1" Column="1" />
+      <File FileName="Assets/MouseLook.cs" Line="29" Column="70" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
